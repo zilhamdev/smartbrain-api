@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 var corsOptions = {
-    origin: 'http://localhost:3001',
+    origin: process.env.ORIGIN_URL,
     optionsSuccessStatus: 200 || 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
