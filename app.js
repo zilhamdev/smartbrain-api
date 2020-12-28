@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 var corsOptions = {
-    origin: process.env.ORIGIN_URL || process.env.ORIGIN_URL_2,
+    origin: (process.env.ORIGIN_URL || process.env.ORIGIN_URL_2),
     optionsSuccessStatus: 200 || 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
