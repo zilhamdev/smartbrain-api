@@ -23,9 +23,15 @@ const db = knex({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-var corsOptions = {
-    origin: (process.env.ORIGIN_URL || process.env.ORIGIN_URL_2),
-    optionsSuccessStatus: 200 || 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
+const whitelist = [process.env.ORIGIN_URL, process.env.ORIGIN_URL_2]
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
 }
 
 app.use(cors(corsOptions));
