@@ -23,7 +23,7 @@ const db = knex({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-const whitelist = [process.env.ORIGIN_URL, process.env.ORIGIN_URL_2]
+const whitelist = [process.env.ORIGIN_URL, process.env.ORIGIN_URL_2, process.env.ORIGIN_URL_3];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
